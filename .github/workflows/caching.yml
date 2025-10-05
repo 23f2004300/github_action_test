@@ -1,0 +1,28 @@
+name: Cache Test
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Prime cache
+        id: prime-cache-eae81e1
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            .m2/repository
+          key: cache-eae81e1
+          restore-keys: |
+            cache-
+
+      - name: Show cache result
+        run: echo "Cache hit? ${{ steps.prime-cache-eae81e1.outputs.cache-hit }}"

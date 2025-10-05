@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Prime cache
+      - name: Prime cache eae81e1
         id: prime-cache-eae81e1
         uses: actions/cache@v4
         with:
